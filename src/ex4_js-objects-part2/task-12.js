@@ -1,5 +1,5 @@
 function sumRounded(a, b) {
-    let sum = (a + b).toFixed(3);
-    return parseFloat(sum);
+    return Number((a + b).toFixed(3));
 }
+
 module.exports = sumRounded;

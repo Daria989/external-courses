@@ -1,6 +1,8 @@
 function strToStr(strMain, str, num) {
     let newStr = strMain.split(" ");
-    let strDel = newStr.splice(num + 1, 0, str);
+    newStr.splice(num + 1, 0, str);
+    
     return newStr.join(" ");
 }
+
 module.exports = strToStr;

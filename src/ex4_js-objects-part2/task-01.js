@@ -1,4 +1,5 @@
 function findProperty(keyword, object) {
-    return object.__proto__[keyword];
+    return Object.getPrototypeOf(object)[keyword];
 }
+
 module.exports = findProperty;
