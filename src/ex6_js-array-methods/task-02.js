@@ -4,6 +4,7 @@ function someOfElements(array, funcCallback) {
            return true;
        }
     }
+
     return false;
 }
 
