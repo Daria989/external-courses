@@ -1,16 +1,11 @@
 function reduceElements(array, funcCallback, initialValue) {
-    let accumulator = array[0];
-    if (initialValue) {
-        accumulator = initialValue;
-        for (let i = 0; i < array.length; i++) {
-           accumulator = funcCallback(accumulator, array[i], i, array);
-        }
-        return accumulator;
-    }
+    let accumulator = initialValue ? initialValue : array[0];
+    let index = initialValue ? 0 : 1;
 
-    for (let i = 1; i < array.length; i++) {
+    for (let i = index; i < array.length; i++) {
         accumulator = funcCallback(accumulator, array[i], i, array);
     }
+    
     return accumulator;
 }
 
