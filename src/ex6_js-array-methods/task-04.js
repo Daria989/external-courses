@@ -5,6 +5,7 @@ function filterElements(array, funcCallback) {
            newArray.push(array[i]);
        }
     }
+    
     return newArray;
 }
 
