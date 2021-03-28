@@ -3,7 +3,7 @@ function partOfArr(array, begin, end) {
     let start = findStartStop(array, begin);
     let stop = findStartStop(array, end);
 
-    function findStartStop (arr, beginEnd) {
+    function findStartStop(arr, beginEnd) {
         let value = 0;
         if (beginEnd < 0) {
             value = (Math.abs(beginEnd) < arr.length) ? arr.length + beginEnd : 0;
@@ -15,24 +15,23 @@ function partOfArr(array, begin, end) {
         return value;
     }
 
-    if (!begin && !end) {
-        newArr = array;
-        return newArr;
-    }
-
-    if (!end) {
-        for (let i = 0; i < (array.length-start); i++) {
+    function cutArray(range) {
+        for (let i = 0; i < range; i++) {
             newArr[i] = array[i + start];
         }
-
-        return newArr;
     }
 
-    for (let i = 0; i < (stop-start); i++) {
-        newArr[i] = array[i + start];
+    if (!begin && !end) {
+        newArr = array;
     }
-    
-    return newArr;
+    else if (!end) {
+        cutArray(array.length - start);
+    }
+    else {
+        cutArray(stop - start);
+    }
+
+    return newArr; 
 }
 
 module.exports = partOfArr;
