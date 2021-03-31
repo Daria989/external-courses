@@ -8,6 +8,9 @@ function partOfArr(array, begin, end) {
         if (beginEnd < 0) {
             value = (Math.abs(beginEnd) < arr.length) ? arr.length + beginEnd : 0;
         }
+        else if (beginEnd > arr.length) {
+            value = arr.length;
+        }
         else {
             value = beginEnd;
         }
@@ -21,10 +24,10 @@ function partOfArr(array, begin, end) {
         }
     }
 
-    if (!begin && !end) {
+    if (begin===undefined && end===undefined) {
         newArr = array;
     }
-    else if (!end) {
+    else if (end===undefined) {
         cutArray(array.length - start);
     }
     else {
