@@ -1,0 +1,10 @@
+.figure {
+    background-image: url(The-Child.jpg);
+    height: 600px;
+    width: 600px;
+    clip-path: circle(50% at 50% 50%);
+}
+
+.figure:hover {
+    clip-path: polygon(50% 0%, 90% 20%, 100% 60%, 75% 100%, 25% 100%, 0% 60%, 10% 20%);
+}
