@@ -1,0 +1,32 @@
+.table {
+    background-color: yellow;
+}
+
+.text {
+    background-color: rgba(30, 192, 204, 0.445);
+    font-style: italic;
+    font-weight: bold;
+}
+
+.list1 {
+    background-image: url(a724834963aa.jpg);
+    background-repeat: no-repeat;
+    background-size: 150px 90px;
+    color: rgb(255, 0, 0);
+    font-size: small;
+}
+
+.list2 {
+    background-color: hsl(305, 40%, 71%);
+    font: 30px sans-serif;
+}
+
+@font-face {
+    font-family: SlimamifMedium;
+    src: url(20451.ttf);
+    }
+    
+.font {
+    font-family: SlimamifMedium;
+    font-size:  1.5em;
+}
