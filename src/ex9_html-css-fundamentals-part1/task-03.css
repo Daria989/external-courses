@@ -1,10 +1,8 @@
-a.button {
-    display: inline-block;
+button {
     font-family: Arial, sans-serif;
     font-weight: bold;
     color: #666666;
     text-transform: uppercase;
-    text-decoration: none;
     text-shadow: 0px 1px 0px white;
     background-color: #d4d4d4;
     padding: 3px 8px 8px 8px;
@@ -16,13 +14,13 @@ a.button {
                 0 0 0 6px #666666;                 
 }
 
-a:before {
+button:before {
     content: '★';
     color: #999999;
     font-size: 130%;
 }
 
-a:after {
+button:after {
   content: '★';
   color: #999999;
   font-size: 130%;
