@@ -1,0 +1,27 @@
+button {
+    font-family: Arial, sans-serif;
+    font-weight: bold;
+    color: #666666;
+    text-transform: uppercase;
+    text-shadow: 0px 1px 0px white;
+    background-color: #d4d4d4;
+    padding: 3px 8px 8px 8px;
+    border-radius: 7px;
+    box-shadow: inset 0px 19px 0px 0px #e4e4e4,
+                0px 1px 1px 1px #808080,
+                0 0 0 4px #cbcbcb,
+                0 0 0 5px white,              
+                0 0 0 6px #666666;                 
+}
+
+button:before {
+    content: '★';
+    color: #999999;
+    font-size: 130%;
+}
+
+button:after {
+  content: '★';
+  color: #999999;
+  font-size: 130%;
+}
