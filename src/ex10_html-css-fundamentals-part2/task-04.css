@@ -1,0 +1,105 @@
+@media (max-width: 1200px) {
+        
+    .wrapper {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .logo-info {
+        display: none;
+    }
+
+    .info {
+        display: none;
+    }
+
+    .menu {
+        display: flex;
+        justify-content: space-around;
+    }
+        
+    .nav {
+        background-image: url("images/menu.png");
+        width: 60px;
+        height : 56px;
+    }
+    
+    .border, .border0, .border1 {
+        display: none;
+    }
+    
+    .search {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+    }
+    
+    input {
+        -webkit-appearance: none;
+        border: 1px solid white;
+        height: 35px;
+        width: 180px;
+        font-size: 15px;
+        margin-left: 10px;
+    }
+
+    .back {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .background-image {
+        position: relative;
+    }
+
+    .slider {
+        display: none;
+    }
+
+    .content {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .what-about {
+        display: flex;
+    }
+    
+    .why-we-exist {
+        display: flex;
+    }
+            
+    .text1 {
+        text-align: justify;
+        width: 650px;
+        font-family: MyriadProRegular, sans-serif;
+        color: #6d6e71;
+        font-size: 16px;
+        line-height: 1.5;
+    }
+    
+    .text2 {
+        text-align: justify;
+        width: 650px;
+        font-family: "MyriadProRegular" sans-serif;
+        color: #6d6e71;
+        font-family: MyriadProRegular, sans-serif;
+        color: #6d6e71;
+        font-size: 16px;
+        line-height: 1.5;
+    }
+    
+    p {
+        font-weight: bold;
+        font-size: 26px;
+    }
+}
+    
+
+
+    
