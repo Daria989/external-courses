@@ -1,24 +1,12 @@
 @media (min-width: 1201px) {
 
-    .wrapper {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-    }
-
-    .head {
-        display: flex;
-        flex-direction: column;
-    }
-
     .logo-info {
         display: flex;
-        justify-content: center;
+        justify-content: space-around;
     }
 
     .logo {
         margin-bottom: 60px;
-        margin-right: 500px;
     }
 
     .logo-tablet {
@@ -27,83 +15,79 @@
 
     .info {
         display: flex;
-        align-items: flex-end;
-        margin-bottom: 30px;
+        align-items: center;
+        margin-left: 300px;
     }
 
     .inf-tel {
         background-image: url("images/icon1.png");
         width: 28px;
         height : 29px;
-        padding: 10px;
         background-repeat: no-repeat;
+        padding-right: 30px;
     }
 
     .inf-tel:hover {
         background-image: url("images/icon1-hover.png");
         width: 28px;
         height : 29px;
-        padding: 10px;
-        background-repeat: no-repeat;
-    }
-
-    .inf-divide {
-        background-image: url("images/divide.png");
-        width: 1px;
-        height : 24px;
-        padding: 10px;
         background-repeat: no-repeat;
     }
 
     .inf-navigation {
         background-image: url("images/icon2.png");
+        background-position: center;
         width: 25px;
         height : 34px;
-        padding: 10px;
         background-repeat: no-repeat;
+        border-right: 2px solid rgb(143, 140, 140);
+        border-left: 2px solid rgb(143, 140, 140);
+        padding-left: 20px;
+        padding-right: 20px;
     }
 
     .inf-navigation:hover {
         background-image: url("images/icon2-hover.png");
         width: 25px;
         height : 34px;
-        padding: 10px;
         background-repeat: no-repeat;
     }
 
     .inf-mail {
         background-image: url("images/icon3.png");
+        background-position: center;
         width: 30px;
         height : 25px;
-        padding: 10px;
         background-repeat: no-repeat;
+        padding-left: 60px;
     }
 
     .inf-mail:hover {
         background-image: url("images/icon3-hover.png");
         width: 30px;
         height : 25px;
-        padding: 10px;
         background-repeat: no-repeat;
     }
 
     .menu {
         display: flex;
-        justify-content: center;
+        justify-content: space-around;
         border-top: 2px solid #eceef4;
         border-bottom: 2px solid #eceef4;
         align-items: center;
     }
 
+    .menu-tablet {
+        display: none
+    }
+
     .nav {
         display: flex;
-        justify-content: center;
-        margin-right: 80px;
     }
 
     button {
-        border-top:  1px solid white;
-        border-bottom: 1px solid white;
+        border-top:  0;
+        border-bottom: 0;
         padding: 20px 20px;
         text-align: center;
         background-color: white;
@@ -113,8 +97,8 @@
 
     button:hover {
         justify-content: space-around;
-        border-top:  1px solid white;
-        border-bottom: 1px solid white;
+        border-top:  0;
+        border-bottom: 0;
         padding: 20px 20px;
         text-align: center;
         background-color: white;
@@ -137,26 +121,21 @@
         border-bottom: 11px solid #1faae2;
     }
 
-    .border1 {
-        border-right: 1px solid white;
+    .button {
+        border-right: 0;
     }
 
-    .border0, .border {
-        border-right: 1px solid white;
-    }
-
-    .border {
-        border-left: 1px solid white;
+    .button-home {
+        border-left: 0;
     }
 
     .search {
         display: flex;
         align-items: center;
-        justify-content: flex-start;
-        margin-left: 150px;
+        
     }
 
-    input {
+    .search-field {
         -webkit-appearance: none;
         border: 1px solid white;
         height: 35px;
@@ -165,33 +144,27 @@
         margin-left: 10px;
     }
 
-    .back {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-    }
-    .background-image {
-        position: relative;
+    .img-tablet {
+        display: none;
     }
 
     .slider {
-        position: absolute;
-        top: 520px;
-        left: 820px;
         display: flex;
+        justify-content: center;
+        margin-top: -300px;
+        margin-left: 300px;
     }
 
-    .green {
-        background-image: url("images/green-box.png");
+    .green-box {
+        background: url("images/green-box.png") no-repeat;
         width: 322px;
         height: 241px;
         display: flex;
         align-items: flex-end;
     }
 
-    .yellow {
-        background-image: url("images/yellow-box.png");
+    .yellow-box {
+        background: url("images/yellow-box.png") no-repeat;
         width: 322px;
         height: 241px;
         display: flex;
@@ -207,7 +180,7 @@
         background-position: center;
     }
 
-    .like-green {
+    .green-line {
         background-image: url("images/like-green.png");
         width: 322px;
         height: 65px;
@@ -216,20 +189,20 @@
         align-items: center;
     }
 
-    .heart1 {
+    .green-heart {
         background-image: url("images/heart1.png");
         width: 32px;
         height: 29px;
         margin-right: 10px;
     }
 
-    .like1 {
+    .green-like {
         background-image: url("images/like1.png");
         width: 27px;
         height: 11px;
     }
 
-    .like-yellow {
+    .yellow-line {
         background-image: url("images/like-yellow.png");
         width: 322px;
         height: 65px;
@@ -238,14 +211,14 @@
         align-items: center;
     }
 
-    .heart2 {
+    .yellow-heart {
         background-image: url("images/heart2.png");
         width: 32px;
         height: 29px;
         margin-right: 10px;
     }
 
-    .like2 {
+    .yellow-like {
         background-image: url("images/like2.png");
         width: 27px;
         height: 11px;
@@ -254,6 +227,7 @@
     .content {
         display: flex;
         justify-content: center;
+        margin-top: 100px;
     }
 
     .what-about {
@@ -273,21 +247,10 @@
     .tree {
         margin-right: 30px;
     }
-    
-    .text1 {
-        text-align: justify;
-        width: 360px;
-        font-family: MyriadProRegular, sans-serif;
-        color: #6d6e71;
-        font-size: 16px;
-        line-height: 1.5;
-    }
 
-    .text2 {
+    .text {
         text-align: justify;
         width: 360px;
-        font-family: "MyriadProRegular" sans-serif;
-        color: #6d6e71;
         font-family: MyriadProRegular, sans-serif;
         color: #6d6e71;
         font-size: 16px;
