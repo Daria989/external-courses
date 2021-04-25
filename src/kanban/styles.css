@@ -99,22 +99,17 @@ html, body {
     height: 55px;
 }
 
-.tasks {
+.footer-tasks-info {
     display: flex;
+    margin-left: 30px;
 }
 
-.active-tasks, .finished-tasks, .board-by {
+
+.footer-info-item {
     font-family: Roboto, sans-serif;
     font-size: 18px;
     color: white;
-}
-
-.active-tasks {
-    margin-left: 60px;
     margin-right: 30px;
-}
-
-.board-by {
-    margin-right: 30px;
+    
 }
 
