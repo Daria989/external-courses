@@ -7,26 +7,29 @@ let buttonRight = document.querySelector('#button-right');
 buttonRight.addEventListener("click", changeRight);
 buttonLeft.addEventListener("click", changeLeft);
 
-function changeRight() {
-    
+image.addEventListener('animationend', removeClass);
+
+function removeClass() {
+    image.classList.remove('animation');
+}
+
+function changeRight() { 
     num++;
     if (num === arr.length) {
         num = 0;
     }
 
-    image.setAttribute('src', 'asset/'+arr[num]+'.jpg');
-    image.classList.remove('animation');
     image.classList.add('animation');
+    image.setAttribute('src', 'asset/'+arr[num]+'.jpg');  
 }
 
 function changeLeft() { 
     --num;
     if (num === -1) {
         num = arr.length - 1; 
-    } 
-
-    image.setAttribute('src', 'asset/'+arr[num]+'.jpg');
-    image.classList.remove('animation');
+    }
+    
     image.classList.add('animation');
+    image.setAttribute('src', 'asset/'+arr[num]+'.jpg');
 }
 
