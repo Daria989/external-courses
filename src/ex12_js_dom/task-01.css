@@ -10,16 +10,16 @@ button {
     border: none;
 }
 
-button:hover {
+#button-left:hover, #button-right:hover {
     background-color: #ece4e4;
     border-radius: 7px;
 }
 
-.button-left {
+#button-left {
     background: url("asset/arrow-left.png") center no-repeat;  
 }
 
-.button-right {
+#button-right {
     background: url("asset/arrow-right.png") center no-repeat;
 }
 
@@ -34,10 +34,6 @@ button:hover {
 @keyframes image-change {
     0% {
       opacity: 0;
-    }
-
-    50% {
-        opacity: 0.5;
     }
 
     100% {
