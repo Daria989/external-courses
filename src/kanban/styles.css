@@ -113,3 +113,8 @@ html, body {
     
 }
 
+.arrow-change {
+    transform: rotate(180deg);
+}
+
+

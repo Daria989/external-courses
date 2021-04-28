@@ -8,16 +8,15 @@ let dropListTemplate =
 </ul>
 </div>`
 
-let arrowUpTemplate = `<img src="images/arrow-up.png" alt="image">`
-let arrowDownTemplate = `<img src="images/arrow-down.png" alt="image">`
-
 let list = document.querySelector('.content');
 let avatarButton = document.querySelector('.user-avatar');
 let arrowButton = document.querySelector('.arrow-down');
+let arrowChange = document.querySelector('.arrow-change');
 
 const addTemplate = () => {
-    if (document.querySelector('.drop-list')) {
-        document.querySelector('.drop-list').remove();
+    let isDropdownOpened = document.querySelector('.drop-list');
+    if (isDropdownOpened) {
+        isDropdownOpened.remove();
     }
     else { 
         list.innerHTML = dropListTemplate;
@@ -25,10 +24,7 @@ const addTemplate = () => {
 }
 
 const arrowUp = () => {
-    if (document.querySelector('.drop-list')) {
-        arrowButton.innerHTML = arrowUpTemplate;
-    }
-    else arrowButton.innerHTML = arrowDownTemplate;
+    arrowChange.classList.toggle('arrow-change');
 }
 
 arrowButton.addEventListener('click', addTemplate);
