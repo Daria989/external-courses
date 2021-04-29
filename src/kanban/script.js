@@ -12,14 +12,17 @@ let list = document.querySelector('.content');
 let avatarButton = document.querySelector('.user-avatar');
 let arrowButton = document.querySelector('.arrow-down');
 let arrowChange = document.querySelector('.arrow-change');
+let isDropdownOpened = false;
 
 const addTemplate = () => {
-    let isDropdownOpened = document.querySelector('.drop-list');
+    let dropList = document.querySelector('.drop-list');
     if (isDropdownOpened) {
-        isDropdownOpened.remove();
+        dropList.remove();
+        isDropdownOpened = false;
     }
     else { 
         list.innerHTML = dropListTemplate;
+        isDropdownOpened = true;
     }
 }
 
