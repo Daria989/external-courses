@@ -2,6 +2,13 @@ function Calc() {
     let accumulator = 0;
     
     return {
+        fetchData(callback) {
+            let promise = new Promise((resolve) => {
+                setTimeout(() => { resolve() }, 1000);
+            })
+            promise.then(this.setState(callback(500)));
+        },
+
         getResult() {
             return accumulator;
         },
@@ -41,16 +48,10 @@ function Calc() {
     }
 }
 
+function setStateCallback(a = 0) {
+    return a;
+};
+
 var Calculator = Calc();
 
-// module.exports = Calculator;
-
-
-const result = Calculator.add(100)
-.divide(20)
-.reset()
-.subtract(1)
-.setState(1)
-.getResult()
-
-console.log(result);
+ module.exports = Calculator;
