@@ -1,0 +1,44 @@
+.wrapper {
+    display: flex;
+    justify-content: center;
+}
+
+button {
+    width: 30px;
+    height: 256px;
+    margin: 10px;
+    border: none;
+}
+
+#button-left:hover, #button-right:hover {
+    background-color: #ece4e4;
+    border-radius: 7px;
+}
+
+#button-left {
+    background: url("asset/arrow-left.png") center no-repeat;  
+}
+
+#button-right {
+    background: url("asset/arrow-right.png") center no-repeat;
+}
+
+#new-image{
+    display: block;
+}
+
+.animation {
+    animation: image-change 0.5s linear;
+}
+
+@keyframes image-change {
+    0% {
+      opacity: 0;
+    }
+
+    100% {
+      opacity: 1;
+    }
+}
+
+
