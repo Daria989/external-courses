@@ -1,5 +1,5 @@
 html, body {
-    width: 100%;
+    min-width: 600px;
     height: 100%;
     margin: 0;
     padding: 0;
@@ -46,18 +46,127 @@ html, body {
 .create-list {
     margin-right: 50px;
 }
-
+            /*Tasks Blocks */
+.main {
+    height: 100%;
+}
 .content {
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+    flex-wrap: wrap;
     height: 100%;
 }
 
-.drop-list {
-    position: relative;
-    left: 85%;
-    top: 0%;
+.task-block {
     display: flex;
-    width: 15%;
-    height: 50%;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: #e2e2e2;
+    width: 250px;
+    min-height: 250px;
+    border: 2px, solid, #e2e2e2;
+    border-radius: 10px;
+    margin-top: 10px;
+}
+
+
+.task-block-header {
+    display: flex;
+    height: 30px;
+    align-items: center;
+    font-family: Roboto, sans-serif;
+    padding-left: 10px;
+    font-size: 18px;
+}
+
+.add-card-button-backlog, .add-card-button-in-progress, .add-card-button-finished, .add-card-button-ready {
+    display: flex;
+    height: 30px;
+    align-items: center;
+    font-family: Roboto, sans-serif;
+    padding-left: 10px;
+    border: none; 
+    outline: none;
+    background-color: transparent;
+    color: rgb(71, 67, 67);
+}
+
+.add-card-button-backlog:hover, .add-card-button-in-progress:hover, .add-card-button-finished:hover, .add-card-button-ready:hover {
+    color: blue;
+    cursor: pointer;
+}
+
+.add-card-button-ready:disabled, .add-card-button-in-progress:disabled, .add-card-button-finished:disabled {
+    color: grey;
+}
+
+.task-card {
+    display:flex;
+    align-items: center;
+    height: 30px;
+    background-color: white;
+    border: 2px solid white;
+    border-radius: 10px;
+    margin: 10px;
+    font-family: Roboto, sans-serif;
+    font-size: 18px;
+}
+
+.big-plus {
+    font-size: 20px;
+}
+
+.task-list-backlog {
+    outline: none; 
+    border: none;
+    border-radius: 10px;
+    margin: 10px;
+    font-family: Roboto, sans-serif;
+    font-size: 18px;
+    height: 30px;
+}
+
+.task-list-ready, .task-list-in-progress, .task-list-finished {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    list-style-type: none;
+    padding-left: 0px;
+    background-color: white;
+    color: white;
+    border-radius: 10px;
+    margin: 10px;
+    font-family: Roboto, sans-serif;
+    font-size: 18px;
+    text-align: center;
+}
+
+.task-list-ready li, .task-list-in-progress li, .task-list-finished li {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #0067A3;
+    border-radius: 10px;
+    height: 30px;
+    margin: 10px;
+}
+
+.task-list-ready li:hover, .task-list-in-progress li:hover, .task-list-finished li:hover {
+    background-color: #0d2b3d;
+}
+
+
+            /*Drop-Down Menu*/
+
+.drop-list {
+    position: absolute;
+    right: 5px;
+    top: 55px;
+    display: flex;
+    width: 200px;
+    height: 250px;
     background-color: white;
     border-radius: 10px;
     
@@ -90,6 +199,12 @@ html, body {
     background-color: #0d2b3d;
 }
 
+.arrow-change {
+    transform: rotate(180deg);
+}
+
+            /*Footer*/
+
 .footer {
     display: flex;
     align-items: center;
@@ -110,11 +225,4 @@ html, body {
     font-size: 18px;
     color: white;
     margin-right: 30px;
-    
 }
-
-.arrow-change {
-    transform: rotate(180deg);
-}
-
-
