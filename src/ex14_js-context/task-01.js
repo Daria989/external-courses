@@ -1,57 +1,54 @@
-function Calc() {
-    let accumulator = 0;
+const Calculator = {
     
-    return {
-        fetchData(callback) {
-            let promise = new Promise((resolve) => {
-                setTimeout(() => { resolve() }, 1000);
-            })
-            promise.then(this.setState(callback(500)));
-        },
+    accumulator: 0,
 
-        getResult() {
-            return accumulator;
-        },
+    fetchData: (callback) => {
+        let promise = new Promise((resolve) => {
+            setTimeout(() => {resolve()}, 1000);
+        })
+        promise.then(Calculator.setState(callback(500)));
+    },
 
-        setState(a = 0) {
-            accumulator = a;
-            return this;
-        },
+    getResult: () => {
+        return Calculator.accumulator;
+    },
 
-        reset() {
-            accumulator = 0; 
-            return this;
-        },
+    setState: (a = 0) => {
+        Calculator.accumulator = a;
+        return Calculator;
+    },
 
-        add(a = 0) {
-            accumulator += a;
-            return this;
-        },
+    reset: () => {
+        Calculator.accumulator = 0; 
+        return Calculator;
+    },
 
-        subtract(a = 0) {
-            accumulator -= a;
-            return this;
-        },
+    add: (a = 0) => {
+        Calculator.accumulator += a;
+        return Calculator;
+    },
 
-        multiply(a = 1) {
-            accumulator *= a;
-            return this;
-        },
+    subtract: (a = 0) => {
+        Calculator.accumulator -= a;
+        return Calculator;
+    },
 
-        divide(a = 1) {
-            if (a === 0 || a === Infinity || isNaN(a)) {
-                return console.log("Result is unknown");
-            }
-            accumulator /= a;
-            return this;
+    multiply: (a = 1) => {
+        Calculator.accumulator *= a;
+        return Calculator;
+    },
+
+    divide: (a = 1) => {
+        if (a === 0 || a === Infinity || isNaN(a)) {
+            return console.log("Result is unknown");
         }
+        Calculator.accumulator /= a;
+        return Calculator;
     }
 }
 
 function setStateCallback(a = 0) {
     return a;
 };
-
-var Calculator = Calc();
 
  module.exports = Calculator;

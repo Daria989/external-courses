@@ -10,7 +10,7 @@ function Hangman(word) {
         let isLetterGuessed = false;
         let sign = letter.toLowerCase();
 
-        if (flag === false) {
+        if (!flag) {
             for (var i = 0; i < this.word.length; i++) {
                 answerArray[i] = '_';
             };
@@ -29,22 +29,22 @@ function Hangman(word) {
                 isLetterGuessed = true;
 
                 if (answerArray.join('') === this.word) {
-                    console.log(answerArray.join('') + ' | ' + "you won!");
+                    console.log(`${answerArray.join('')} | you won!`);
                     flag = false;
                     return this;
                 } 
             }
         }
 
-        if (isLetterGuessed === false) {
-            --errorsLeft;
+        if (!isLetterGuessed) {
+            errorsLeft -= 1;
 
             wrongLetters.add(letter);
             
-            console.log('wrong letter, ' + ' errors left ' + errorsLeft + ' | ' + Array.from(wrongLetters).join());
+            console.log(`wrong letter, errors left ${errorsLeft} | ${Array.from(wrongLetters).join()}`);
 
-            if (errorsLeft === 0) {
-                console.log("You have no attempts left");
+            if (errorsLeft < 1) {
+                console.log('You have no attempts left');
                 flag = false;
             }
         }
@@ -57,7 +57,7 @@ function Hangman(word) {
 
     this.getGuessedString = function() {
         console.log(answerArray.join(''));
-        return answerArray.join("");  
+        return answerArray.join('');  
     };
 
     this.getErrorsLeft = function() {
@@ -72,7 +72,7 @@ function Hangman(word) {
     };
 
     this.getStatus = function() {
-        console.log(answerArray.join('') + ' | ' + ' errors left ' + errorsLeft);
+        console.log(`${answerArray.join('')} | errors left ${errorsLeft}`);
         return this;
     };
 
