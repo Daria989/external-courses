@@ -8,30 +8,27 @@ let dropListTemplate =
 </ul>
 </div>`
 
+const addCardButtonBacklog = document.querySelector('.add-card-button-backlog');
 
-let main = document.querySelector('.main');
-let avatarButton = document.querySelector('.user-avatar');
-let arrowButton = document.querySelector('.arrow-down');
-let arrowChange = document.querySelector('.arrow-change');
+const addCardButtonInProgress = document.querySelector('.add-card-button-in-progress');
+addCardButtonInProgress.disabled = true;
+
+const addCardButtonFinished = document.querySelector('.add-card-button-finished');
+addCardButtonFinished.disabled = true;
+
+const addCardButtonReady = document.querySelector('.add-card-button-ready');
+addCardButtonReady.disabled = true;
+
+
+const main = document.querySelector('.main');
+const avatarButton = document.querySelector('.user-avatar');
+const arrowButton = document.querySelector('.arrow-down');
+const arrowChange = document.querySelector('.arrow-change');
 
 let isDropListBacklogOpen = false;
 let isDropdownOpened = false;
-let isDropListReadyOpen = false;
-let isDropListInProgressOpen = false;
-let isDropListFinishedOpen = false;
 
-let addCardButtonBacklog = document.querySelector('.add-card-button-backlog');
-let addCardButtonInProgress = document.querySelector('.add-card-button-in-progress');
-let addCardButtonFinished = document.querySelector('.add-card-button-finished');
-let addCardButtonReady = document.querySelector('.add-card-button-ready');
-
-addCardButtonReady.disabled = true;
-addCardButtonInProgress.disabled = true;
-addCardButtonFinished.disabled = true;
-
-// Drop-down menu
-
-const addTemplate = () => {
+function addTemplate() {
     let dropList = document.querySelector('.drop-list');
     if (isDropdownOpened) {
         dropList.remove();
@@ -43,185 +40,149 @@ const addTemplate = () => {
     }
 }
 
-const arrowUp = () => {
+function arrowUp() {
     arrowChange.classList.toggle('arrow-change');
 }
 
-// TASK CARDS
-
-//Backlog
-
-const addCardBacklog = () => {
-    let taskListBacklog = document.querySelector('.task-list-backlog');
+function addCardBacklog() {
     if (isDropListBacklogOpen) {
         taskListBacklog.remove();
         isDropListBacklogOpen = false;
     }
     else {
-        let addCardBacklogTemplate = `<input type="text" class="task-list-backlog"></input>`;
-        addCardButtonBacklog.insertAdjacentHTML("beforebegin", addCardBacklogTemplate);
+        let template = `<input type="text" class="task-field-backlog"></input>`;
+        addCardButtonBacklog.insertAdjacentHTML("beforebegin", template);
         isDropListBacklogOpen = true;
-    }
-
-    if (document.querySelector('.task-list-backlog')) {
-        let taskListBacklog = document.querySelector('.task-list-backlog');
-        taskListBacklog.addEventListener('blur', chooseTaskBacklog);
+        taskListBacklog = document.querySelector('.task-field-backlog');
+        taskListBacklog.addEventListener('blur', addTaskToBacklog);
     }
 }
 
-const chooseTaskBacklog = () => {
-    let taskListBacklog = document.querySelector('.task-list-backlog');
+function setButtonDisabled(className, isDisabled) {
+    let element = document.querySelector(`.${className}`);
+    element.disabled = isDisabled;
+}
+
+function boardButtonEnable(board) {
+    let className = null;
+
+    switch (board) {
+        case 'task-backlog':
+            className = 'add-card-button-ready';
+            break;
+        case 'task-ready':
+            className = 'add-card-button-in-progress';
+            break;
+        case 'task-in-progress':
+            className = 'add-card-button-finished';
+            break;
+        default:
+            break;
+    }
+    
+    if (className !== null) {
+        setButtonDisabled(className, false);
+    }
+}
+
+function boardButtonDisable(board) {
+    let className = null;
+
+    switch (board) {
+        case 'task-ready':
+            className = "add-card-button-ready"; 
+            break;
+        case 'task-in-progress':
+            className = "add-card-button-in-progress";
+            break;
+        case 'task-finished':
+            className = "add-card-button-finished";
+            break;
+        default:
+            break;
+    }
+
+    if (className !== null) {
+        setButtonDisabled(className, true);
+    }
+}
+
+function addTaskToBacklog() {
     if (taskListBacklog.value) {
-        taskListBacklog.insertAdjacentHTML("beforebegin", '<div class="task-card task-backlog">' + taskListBacklog.value + '</div>');
-        addCardButtonReady.disabled = false;
-        taskListBacklog.remove();
+        taskListBacklog.insertAdjacentHTML("beforebegin", `<div class="task-backlog">${taskListBacklog.value}</div>`);
         isDropListBacklogOpen = false;
-    }
-    else {addCardButtonReady.disabled = true;
-    }
-}
-
-// Ready
-
-const addCardReady = () => { 
-
-    let textValueBacklog = document.querySelectorAll('.task-backlog');
-    let taskListReady = document.querySelector('.task-list-ready');
-
-    if (isDropListReadyOpen) {
-        taskListReady.remove();
-        isDropListReadyOpen = false;
-    }
-    else if (textValueBacklog.length !== 0) {
-        let addCardReadyTemplate = '<ul class="task-list-ready">';
-
-        textValueBacklog.forEach(function(item) {
-            addCardReadyTemplate +='<li>'+ item.innerHTML +'</li>';
-        });
-
-        addCardReadyTemplate += '</ul>';
-
-        addCardButtonReady.insertAdjacentHTML('beforebegin', addCardReadyTemplate);
-        isDropListReadyOpen = true;
-    }
-
-    if (document.querySelector('.task-list-ready')) {
-        let taskListReady = document.querySelector('.task-list-ready');
-        taskListReady.addEventListener('click', chooseTaskReady);
+        boardButtonEnable('task-backlog');
+        taskListBacklog.remove();
     }
 }
 
-const chooseTaskReady = (event) => { 
-    let taskListReady = document.querySelector('.task-list-ready');
-    let textValueBacklog = document.querySelectorAll('.task-backlog');
-    if (event.target.tagName === "LI") {
-        taskListReady.insertAdjacentHTML("beforebegin", '<div class="task-card task-ready">' + event.target.innerHTML + '</div>');
-        addCardButtonInProgress.disabled = false;
+function generateHTMLDropList(fromBoardTasks) {
+	let template = `<ul class='task-list'>`;
+	fromBoardTasks.forEach(function(item) {
+	    template +=`<li>${item.innerHTML}</li>`;
+	});
+	template += '</ul>';
 
-        for(let val of textValueBacklog) {
-            if(val.innerHTML === event.target.innerHTML) {
-                val.remove();
-                taskListReady.remove();
-                isDropListReadyOpen = false;
-
-            }
-        }
-    } 
+	return template;  
 }
 
-// In Progress
+let tasksList;
+let tempTasksList;
+let isListOpen = false;
 
-const addCardInProgress = () => {
-    let tasksReady = document.querySelectorAll('.task-ready');
-    let taskListInProgress = document.querySelector('.task-list-in-progress');
+function addCard(fromBoard, toBoard, event) {
+    tasksList = document.querySelectorAll(`.${fromBoard}`);
     
-    if (isDropListInProgressOpen) {
-        taskListInProgress.remove();
-        isDropListInProgressOpen = false;
+    if (isListOpen) {
+        tempTasksList.remove();
+        isListOpen = false;
     }
-    else if (tasksReady.length !== 0) {
-        let addCardInProgressTemplate = '<ul class="task-list-in-progress">';
+    else if (tasksList.length !== 0) {
+        let tasksDropList = generateHTMLDropList(tasksList);
+        event.currentTarget.insertAdjacentHTML('beforebegin', tasksDropList);
+
+        isListOpen = true;
+
+        tempTasksList = document.querySelector(`.task-list`);
+        tempTasksList.addEventListener('click', function(event) {chooseTask(toBoard, event)});
+    }
+}
+
+function chooseTask(toBoard, event) { 
+    if (event.target.tagName === "LI") {
+        tempTasksList.insertAdjacentHTML("beforebegin", `<div class="${toBoard}">${event.target.innerHTML}</div>`);
         
-        tasksReady.forEach(function(item) {
-            addCardInProgressTemplate +='<li>'+ item.innerHTML + '</li>';
-        });
-
-        addCardInProgressTemplate += '</ul>';
-        addCardButtonInProgress.insertAdjacentHTML("beforebegin", addCardInProgressTemplate);
-        isDropListInProgressOpen = true;
-    }
-
-    if (document.querySelector('.task-list-in-progress')) {
-        let taskListInProgress = document.querySelector('.task-list-in-progress');
-        taskListInProgress.addEventListener('click', chooseTaskInProgress);
-    }
-}
-
-const chooseTaskInProgress = (event) => {
-    let taskListInProgress = document.querySelector('.task-list-in-progress');
-    let tasksReady = document.querySelectorAll('.task-ready');
-    if (event.target.tagName === "LI") {
-        taskListInProgress.insertAdjacentHTML("beforebegin", '<div class="task-card task-in-progress">' + event.target.innerHTML + '</div>');
-        addCardButtonFinished.disabled = false;
-
-        for(let val of tasksReady) {
+        for(let val of tasksList) {
             if(val.innerHTML === event.target.innerHTML) {
                 val.remove();
-                taskListInProgress.remove();
-                isDropListInProgressOpen = false;
+                boardButtonEnable(toBoard);
+                tempTasksList.remove();
+                isListOpen = false;
             }
         }
     }
-}
 
-    //Finished
-
-const addCardFinished = () => {
-    let tasksInProgress = document.querySelectorAll('.task-in-progress');
-    let taskListFinished = document.querySelector('.task-list-finished');
-
-    if (isDropListFinishedOpen) {
-        taskListFinished.remove();
-        isDropListFinishedOpen = false;
-    }
-    else if (tasksInProgress.length !== 0) {
-        let addCardFinishedTemplate = '<ul class="task-list-finished">';
-
-        tasksInProgress.forEach(function(item) {
-            addCardFinishedTemplate +='<li>'+ item.innerHTML + '</li>';
-        });
-
-        addCardFinishedTemplate += '</ul>';
-        addCardButtonFinished.insertAdjacentHTML("beforebegin", addCardFinishedTemplate);
-        isDropListFinishedOpen = true;
-    }
-    
-    if (document.querySelector('.task-list-finished')) {
-        let taskListFinished = document.querySelector('.task-list-finished');
-        taskListFinished.addEventListener('click', chooseTaskFinished);
+    if (tasksList.length < 2) {
+        boardButtonDisable(toBoard);
     }
 }
 
-const chooseTaskFinished = (event) => {
-    let taskListFinished = document.querySelector('.task-list-finished');
-    let tasksInProgress = document.querySelectorAll('.task-in-progress');
-    if (event.target.tagName === "LI") {
-        taskListFinished.insertAdjacentHTML("beforebegin", '<div class="task-card task-finished">' + event.target.innerHTML + '</div>');
+function addCardReady(event) {
+    addCard('task-backlog', 'task-ready', event);
+}
 
-        for(let val of tasksInProgress) {
-            if(val.innerHTML === event.target.innerHTML) {
-                val.remove();
-                taskListFinished.remove();
-                isDropListFinishedOpen = false;
-            }
-        }
-    }
+function addCardInProgress(event) {
+    addCard('task-ready', 'task-in-progress', event);
+}
+
+function addCardFinished(event) {
+    addCard('task-in-progress', 'task-finished', event);
 }
 
 addCardButtonBacklog.addEventListener('click', addCardBacklog);
+addCardButtonReady.addEventListener('click', addCardReady);
 addCardButtonInProgress.addEventListener('click', addCardInProgress);
 addCardButtonFinished.addEventListener('click', addCardFinished);
-addCardButtonReady.addEventListener('click', addCardReady);
 
 arrowButton.addEventListener('click', addTemplate);
 avatarButton.addEventListener('click', addTemplate);

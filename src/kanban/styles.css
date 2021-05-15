@@ -66,7 +66,6 @@ html, body {
     background-color: #e2e2e2;
     width: 250px;
     min-height: 250px;
-    border: 2px, solid, #e2e2e2;
     border-radius: 10px;
     margin-top: 10px;
 }
@@ -102,7 +101,7 @@ html, body {
     color: grey;
 }
 
-.task-card {
+.task-backlog, .task-ready, .task-in-progress, .task-finished {
     display:flex;
     align-items: center;
     height: 30px;
@@ -118,32 +117,32 @@ html, body {
     font-size: 20px;
 }
 
-.task-list-backlog {
-    outline: none; 
-    border: none;
-    border-radius: 10px;
-    margin: 10px;
+.task-field-backlog {
+    height: 30px;
     font-family: Roboto, sans-serif;
     font-size: 18px;
-    height: 30px;
-}
-
-.task-list-ready, .task-list-in-progress, .task-list-finished {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    list-style-type: none;
-    padding-left: 0px;
-    background-color: white;
-    color: white;
+    text-align: center;
+    border: 1px solid white;
+    outline: none;
     border-radius: 10px;
     margin: 10px;
+}
+
+.task-list {
+    outline: none; 
+    border: none;
+    padding-left: 0px;
+    list-style-type: none;
+    background-color: white;
+    border-radius: 10px;
+    margin: 10px;
+    color: white;
     font-family: Roboto, sans-serif;
     font-size: 18px;
     text-align: center;
 }
 
-.task-list-ready li, .task-list-in-progress li, .task-list-finished li {
+.task-list li {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -153,7 +152,7 @@ html, body {
     margin: 10px;
 }
 
-.task-list-ready li:hover, .task-list-in-progress li:hover, .task-list-finished li:hover {
+.task-list li:hover {
     background-color: #0d2b3d;
 }
 
