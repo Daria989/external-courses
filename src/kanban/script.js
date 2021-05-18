@@ -1,13 +1,3 @@
-let dropListTemplate = 
-`<div class="drop-list">
-<ul>
-    <li>My account</li>
-    <li>My tasks</li>
-    <li>Settings</il>
-    <li>Log out</li>
-</ul>
-</div>`
-
 const addCardButtonBacklog = document.querySelector('.add-card-button-backlog');
 
 const addCardButtonInProgress = document.querySelector('.add-card-button-in-progress');
@@ -19,30 +9,7 @@ addCardButtonFinished.disabled = true;
 const addCardButtonReady = document.querySelector('.add-card-button-ready');
 addCardButtonReady.disabled = true;
 
-
-const main = document.querySelector('.main');
-const avatarButton = document.querySelector('.user-avatar');
-const arrowButton = document.querySelector('.arrow-down');
-const arrowChange = document.querySelector('.arrow-change');
-
 let isDropListBacklogOpen = false;
-let isDropdownOpened = false;
-
-function addTemplate() {
-    let dropList = document.querySelector('.drop-list');
-    if (isDropdownOpened) {
-        dropList.remove();
-        isDropdownOpened = false;
-    }
-    else {
-        main.insertAdjacentHTML("afterbegin", dropListTemplate);
-        isDropdownOpened = true;
-    }
-}
-
-function arrowUp() {
-    arrowChange.classList.toggle('arrow-change');
-}
 
 function addCardBacklog() {
     if (isDropListBacklogOpen) {
@@ -63,47 +30,46 @@ function setButtonDisabled(className, isDisabled) {
     element.disabled = isDisabled;
 }
 
-function boardButtonEnable(board) {
-    let className = null;
+function boardButtonEnable(board, tasksListLength) {
+    let classNameEn = null;
+    let classNameDis = null;
 
     switch (board) {
         case 'task-backlog':
-            className = 'add-card-button-ready';
+            classNameEn = 'add-card-button-ready';
             break;
         case 'task-ready':
-            className = 'add-card-button-in-progress';
+            classNameEn = 'add-card-button-in-progress';
             break;
         case 'task-in-progress':
-            className = 'add-card-button-finished';
-            break;
-        default:
-            break;
-    }
-    
-    if (className !== null) {
-        setButtonDisabled(className, false);
-    }
-}
-
-function boardButtonDisable(board) {
-    let className = null;
-
-    switch (board) {
-        case 'task-ready':
-            className = "add-card-button-ready"; 
-            break;
-        case 'task-in-progress':
-            className = "add-card-button-in-progress";
-            break;
-        case 'task-finished':
-            className = "add-card-button-finished";
+            classNameEn = 'add-card-button-finished';
             break;
         default:
             break;
     }
 
-    if (className !== null) {
-        setButtonDisabled(className, true);
+    if (classNameEn !== null) {
+        setButtonDisabled(classNameEn, false);
+    }
+
+    if (tasksListLength < 2) {
+        switch (board) {
+            case 'task-ready':
+                classNameDis = "add-card-button-ready"; 
+                break;
+            case 'task-in-progress':
+                classNameDis = "add-card-button-in-progress";
+                break;
+            case 'task-finished':
+                classNameDis = "add-card-button-finished";
+                break;
+            default:
+                break;
+        }
+
+        if (classNameDis !== null) {
+            setButtonDisabled(classNameDis, true);
+        }
     }
 }
 
@@ -141,8 +107,8 @@ function addCard(fromBoard, toBoard, event) {
         let tasksDropList = generateHTMLDropList(tasksList);
         event.currentTarget.insertAdjacentHTML('beforebegin', tasksDropList);
 
-        isListOpen = true;
-
+        
+isListOpen = true;
         tempTasksList = document.querySelector(`.task-list`);
         tempTasksList.addEventListener('click', function(event) {chooseTask(toBoard, event)});
     }
@@ -151,11 +117,11 @@ function addCard(fromBoard, toBoard, event) {
 function chooseTask(toBoard, event) { 
     if (event.target.tagName === "LI") {
         tempTasksList.insertAdjacentHTML("beforebegin", `<div class="${toBoard}">${event.target.innerHTML}</div>`);
-        
+        boardButtonEnable(toBoard, tasksList.length);
+
         for(let val of tasksList) {
             if(val.innerHTML === event.target.innerHTML) {
-                val.remove();
-                boardButtonEnable(toBoard);
+                val.remove(); 
                 tempTasksList.remove();
                 isListOpen = false;
             }
@@ -163,7 +129,7 @@ function chooseTask(toBoard, event) {
     }
 
     if (tasksList.length < 2) {
-        boardButtonDisable(toBoard);
+        boardButtonEnable(toBoard, tasksList.length, event);
     }
 }
 
