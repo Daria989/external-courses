@@ -1,0 +1,42 @@
+.drop-list {
+    position: absolute;
+    right: 5px;
+    top: 55px;
+    display: flex;
+    width: 200px;
+    height: 250px;
+    background-color: white;
+    border-radius: 10px;
+    
+}
+
+.drop-list ul {
+    width: 100%;
+    list-style-type: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    padding: 0;
+}
+
+.drop-list ul li{
+    width: 90%;
+    font-family: Roboto, sans-serif;
+    font-size: 18px;
+    color: white;
+    border: 1px solid #0067A3;
+    padding: 10px 0;
+    background-color: #0067A3;
+    border-radius: 5px;
+    text-align: center;
+    
+}
+
+.drop-list ul li:hover {
+    background-color: #0d2b3d;
+}
+
+.arrow-change {
+    transform: rotate(180deg);
+}
