@@ -1,16 +1,18 @@
-# Практическая работа 17 - Компонентный подход
+# Kanban
 
-## Задание 1
+Kanban is a lean method to manage and improve work across human systems. This approach aims to manage work by balancing demands with available capacity, and by improving the handling of system-level bottlenecks. 
 
-На протяжении нескольких занятий вы работали над проектом Kanban. Необходимо переписать его, следуя правилам компонентного подхода. 
-В папке этого задания должен быть файл index.html, собирающий проект, и папка src с исходниками.<br>
-А так же обязательное требование - написать очень подробный файл README.md и положить его в корень проекта. Должно быть описано, как открыть ваш проект.
+## Usage
 
-### Требования
+- Clone repository from githab (git@github.com:Daria989/external-courses.git)
+- Checkout the branch kanban
+- Open the index.html in browser
 
-- Файловая структура (см. описание выше)
-- Использование компонентов (модулей)
-- Использование синтаксиса import/export
-- Не использовать устаревшие операторы (var, и тд)
 
-PS. в index.html может лежать весь html, но так же можно разбить его на модули и вставлять в DOM через специальные методы. Инициатива при выборе дополнительных инструментов привествуется
+## For developers
+
+- Clone project to local directory
+    
+    `git clone <url repository.git>`
+
+-  Open project with code editor (for example VS Code)
