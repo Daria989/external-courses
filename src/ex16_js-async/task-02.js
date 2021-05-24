@@ -2,16 +2,16 @@ const myInput = document.getElementById("site-search");
 
 function debounce(callback, delay) {
     let timeout;
-    return function() {
+    return function(event) {
         clearTimeout(timeout);
-        timeout = setTimeout(callback, delay);
+        timeout = setTimeout(function() { callback(event) }, delay);
     }
 }
 
-function getSearchResult() {
+function getSearchResult(event) {
     let div = document.createElement('div');
     document.body.append(div);
-    div.innerHTML = myInput.value;
+    div.innerHTML = event.target.value;
 }
 
-myInput.addEventListener("keyup", debounce(getSearchResult, 2000));
+myInput.addEventListener("input", debounce(function(event) { getSearchResult(event) }, 1000));
