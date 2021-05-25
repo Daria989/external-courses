@@ -1,5 +1,5 @@
-import {boardButtonEnable} from '../add-button/add-button-disable.js';
-import {addCard} from '../add-button/add-task.js';
+import {boardButtonEnable} from '../add-button/add-button.js';
+import {addCard} from './add-task.js';
 
 export const addCardButtonBacklog = document.querySelector('.add-card-button-backlog');
 export let taskListBacklog;

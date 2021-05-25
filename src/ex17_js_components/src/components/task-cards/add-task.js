@@ -1,4 +1,4 @@
-import {boardButtonEnable} from '../add-button/add-button-disable.js';
+import {boardButtonEnable} from '../add-button/add-button.js';
 
 function generateHTMLDropList(fromBoardTasks) {
 	let template = `<ul class='task-list'>`;

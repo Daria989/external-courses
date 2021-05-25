@@ -1,8 +1,5 @@
-import {addTemplate, arrowUp} from './components/user-menu/user-menu.js';
-import {addCardButtonBacklog, addCardBacklog} from './components/task-cards/task-cards.js';
-import {addCardReady} from './components/task-cards/task-cards.js';
-import {addCardInProgress} from './components/task-cards/task-cards.js';
-import {addCardFinished} from './components/task-cards/task-cards.js';
+import {addTemplate, arrowUp} from './components/user-menu/index.js';
+import {addCardButtonBacklog, addCardBacklog, addCardReady, addCardInProgress, addCardFinished} from './components/task-cards/index.js';
 
 const avatarButton = document.querySelector('.user-avatar');
 const arrowButton = document.querySelector('.arrow-down');
