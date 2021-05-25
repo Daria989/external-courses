@@ -1,4 +1,5 @@
 import {boardButtonEnable} from '../add-button/add-button-disable.js';
+import {addCard} from '../add-button/add-task.js';
 
 export const addCardButtonBacklog = document.querySelector('.add-card-button-backlog');
 export let taskListBacklog;
@@ -25,4 +26,16 @@ function addTaskToBacklog() {
         boardButtonEnable('task-backlog');
         taskListBacklog.remove();
     }
+}
+
+export function addCardFinished(event) {
+    addCard('task-in-progress', 'task-finished', event);
+}
+
+export function addCardInProgress(event) {
+    addCard('task-ready', 'task-in-progress', event);
+}
+
+export function addCardReady(event) {
+    addCard('task-backlog', 'task-ready', event);
 }

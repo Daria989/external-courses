@@ -1,8 +1,8 @@
 import {addTemplate, arrowUp} from './components/user-menu/user-menu.js';
-import {addCardButtonBacklog, addCardBacklog} from './components/backlog-card/backlog-card.js';
-import {addCardReady} from './components/ready-card/ready-card.js';
-import {addCardInProgress} from './components/in-progress-card/in-progress-card.js';
-import {addCardFinished} from './components/finished-card/finished-card.js';
+import {addCardButtonBacklog, addCardBacklog} from './components/task-cards/task-cards.js';
+import {addCardReady} from './components/task-cards/task-cards.js';
+import {addCardInProgress} from './components/task-cards/task-cards.js';
+import {addCardFinished} from './components/task-cards/task-cards.js';
 
 const avatarButton = document.querySelector('.user-avatar');
 const arrowButton = document.querySelector('.arrow-down');
