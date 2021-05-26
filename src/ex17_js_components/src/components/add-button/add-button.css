@@ -1,0 +1,20 @@
+.add-card-button-backlog, .add-card-button-in-progress, .add-card-button-finished, .add-card-button-ready {
+    display: flex;
+    height: 30px;
+    align-items: center;
+    font-family: Roboto, sans-serif;
+    padding-left: 10px;
+    border: none; 
+    outline: none;
+    background-color: transparent;
+    color: rgb(71, 67, 67);
+}
+
+.add-card-button-backlog:hover, .add-card-button-in-progress:hover, .add-card-button-finished:hover, .add-card-button-ready:hover {
+    color: blue;
+    cursor: pointer;
+}
+
+.add-card-button-ready:disabled, .add-card-button-in-progress:disabled, .add-card-button-finished:disabled {
+    color: grey;
+}

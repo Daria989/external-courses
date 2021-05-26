@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Kanban Board</title>
+    <link rel="stylesheet" href="src/main.css">
+    <link rel="stylesheet" href="src/components/user-menu/user-menu.css">
+    <link rel="stylesheet" href="src/components/add-button/add-button.css">
+    <link rel="stylesheet" href="src/components/task-cards/task-cards.css">
+</head>
+<body>
+    <div class="wrapper">
+        <div class="header">
+            <div class="left-menu">
+                <div class="burger"><img src="src/assets/logo.png" alt="image"></div>
+                <div class="logo">Awesome Kanban Board</div>
+            </div>
+            <div class="right-menu">
+                <div class="create-list"><img src="src/assets/create-list.png" alt="image"></div>
+                <div class="user-avatar"><img src="src/assets/user-avatar.png" alt="image"></div>
+                <div class="arrow-down"><img class="arrow-change" src="src/assets/arrow-up.png" alt="image"></div>
+            </div>  
+        </div>
+        <main class="main">
+            <div class="content">
+                <div class="task-block">
+                    <div class="task-block-header">Backlog</div>
+                    <button class="add-card-button-backlog"><span class="big-plus">+</span>&nbsp;Add card</button>
+                </div>
+                <div class="task-block">
+                    <div class="task-block-header">Ready</div>
+                    <button class="add-card-button-ready"><span class="big-plus">+</span>&nbsp;Add card</button>
+                </div>
+                <div class="task-block">
+                    <div class="task-block-header">In Progress</div>
+                    <button class="add-card-button-in-progress"><span class="big-plus">+</span>&nbsp;Add card</button>
+                </div>
+                <div class="task-block">
+                    <div class="task-block-header">Finished</div>
+                    <button class="add-card-button-finished"><span class="big-plus">+</span>&nbsp;Add card</button>
+                </div>
+            </div>
+        </main>
+        <div class="footer">
+            <div class="footer-tasks-info">
+                <div class="footer-info-item">Active tasks: &lt;N&gt;</div>
+                <div class="footer-info-item">Finished tasks: &lt;M&gt;</div>
+            </div>
+            <div class="footer-info-item">Kanban board by &lt;NAME&gt;, &lt;YEAR&gt;</div>
+        </div>
+    </div>
+    <script type="module" src="src/main.js"></script>
+</body>
+</html>
