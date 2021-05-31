@@ -7,7 +7,9 @@
     <link rel="stylesheet" href="src/main.css">
     <link rel="stylesheet" href="src/components/user-menu/user-menu.css">
     <link rel="stylesheet" href="src/components/add-button/add-button.css">
-    <link rel="stylesheet" href="src/components/task-cards/task-cards.css">
+    <link rel="stylesheet" href="src/components/create-list/create-list.css">
+    <link rel="stylesheet" href="src/components/context-menu/context-menu.css">
+
 </head>
 <body>
     <div class="wrapper">
@@ -25,27 +27,39 @@
         <main class="main">
             <div class="content">
                 <div class="task-block">
-                    <div class="task-block-header">Backlog</div>
-                    <button class="add-card-button-backlog"><span class="big-plus">+</span>&nbsp;Add card</button>
+                    <div class="card-header">
+                        <div class="task-block-header">Backlog</div>
+                        <button class="context-menu"> . . .</button>
+                    </div>
+                    <button class="add-card-button"><span class="big-plus">+</span>&nbsp;Add card</button>
                 </div>
                 <div class="task-block">
-                    <div class="task-block-header">Ready</div>
-                    <button class="add-card-button-ready"><span class="big-plus">+</span>&nbsp;Add card</button>
+                    <div class="card-header">
+                        <div class="task-block-header">Ready </div>
+                        <button class="context-menu"> . . .</button>
+                    </div>
+                    <button class="add-card-button"><span class="big-plus">+</span>&nbsp;Add card</button>
                 </div>
                 <div class="task-block">
-                    <div class="task-block-header">In Progress</div>
-                    <button class="add-card-button-in-progress"><span class="big-plus">+</span>&nbsp;Add card</button>
+                    <div class="card-header">
+                        <div class="task-block-header">In Progress</div>
+                        <button class="context-menu"> . . .</button>
+                    </div>
+                    <button class="add-card-button"><span class="big-plus">+</span>&nbsp;Add card</button>
                 </div>
                 <div class="task-block">
-                    <div class="task-block-header">Finished</div>
-                    <button class="add-card-button-finished"><span class="big-plus">+</span>&nbsp;Add card</button>
+                    <div class="card-header">
+                        <div class="task-block-header">Finished</div>
+                        <button class="context-menu"> . . .</button>
+                    </div>
+                    <button class="add-card-button"><span class="big-plus">+</span>&nbsp;Add card</button>
                 </div>
             </div>
         </main>
         <div class="footer">
             <div class="footer-tasks-info">
-                <div class="footer-info-item">Active tasks: &lt;N&gt;</div>
-                <div class="footer-info-item">Finished tasks: &lt;M&gt;</div>
+                <div class="footer-info-item">First block tasks: &lt;N&gt;</div>
+                <div class="footer-info-item">Last block tasks: &lt;M&gt;</div>
             </div>
             <div class="footer-info-item">Kanban board by &lt;NAME&gt;, &lt;YEAR&gt;</div>
         </div>

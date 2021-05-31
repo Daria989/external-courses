@@ -1,0 +1,37 @@
+.context-menu {
+    display: flex;
+    height: 30px;
+    align-items: center;
+    font-family: Roboto, sans-serif;
+    padding-right: 20px;
+    border: none; 
+    outline: none;
+    background-color: transparent;
+    color: rgb(136, 128, 128);
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.context-menu:hover {
+    color: #0067A3;
+}
+
+.drop-list-context-menu {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
+    display: flex;
+    width: 230px;
+    height: 35px;
+    background-color: #0067A3;
+    border-radius: 10px;
+    color: white;
+    font-family: Roboto, sans-serif;
+    font-size: 18px;
+}
+
+.drop-list-context-menu:hover {
+    background-color: #0d2b3d;
+}
