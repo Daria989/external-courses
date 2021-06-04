@@ -1,0 +1,11 @@
+.card-name-field {
+    height: 30px;
+    width: 160px;
+    font-family: Roboto, sans-serif;
+    font-size: 18px;
+    text-align: center;
+    border: 1px solid white;
+    outline: none;
+    border-radius: 10px;
+    margin: 10px;
+}

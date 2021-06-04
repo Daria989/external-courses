@@ -1,47 +1,57 @@
-function setButtonDisabled(className, isDisabled) {
-    let element = document.querySelector(`.${className}`);
-    element.disabled = isDisabled;
+function generateHTMLDropList(fromBoardTasks) {
+	let template = `<ul class='task-list'>`;
+	fromBoardTasks.forEach(function(item) {
+	    template +=`<li>${item.innerHTML}</li>`;
+	});
+	template += '</ul>';
+
+	return template;  
 }
 
-export function boardButtonEnable(board, tasksListLength) {
-    let classNameEn = null;
-    let classNameDis = null;
+let tasksList;
+let tempTasksList;
+let isListOpen = false;
+let addButton;
+let footerInfo = document.querySelectorAll('.footer-info-item');
 
-    switch (board) {
-        case 'task-backlog':
-            classNameEn = 'add-card-button-ready';
-            break;
-        case 'task-ready':
-            classNameEn = 'add-card-button-in-progress';
-            break;
-        case 'task-in-progress':
-            classNameEn = 'add-card-button-finished';
-            break;
-        default:
-            break;
+export function addCard(event) {
+    addButton = event.currentTarget;
+    tasksList = event.currentTarget.parentNode.previousElementSibling.querySelectorAll('.tasks');
+    if (isListOpen) {
+        tempTasksList.remove();
+        isListOpen = false;
     }
-
-    if (classNameEn !== null) {
-        setButtonDisabled(classNameEn, false);
+    else if (tasksList.length !== 0) {
+        let tasksDropList = generateHTMLDropList(tasksList);
+        event.currentTarget.insertAdjacentHTML('beforebegin', tasksDropList); 
+        isListOpen = true;
+        tempTasksList = document.querySelector(`.task-list`);
+        tempTasksList.addEventListener('click', function(event) {chooseTask(event)});
     }
+}
 
-    if (tasksListLength < 2) {
-        switch (board) {
-            case 'task-ready':
-                classNameDis = "add-card-button-ready"; 
-                break;
-            case 'task-in-progress':
-                classNameDis = "add-card-button-in-progress";
-                break;
-            case 'task-finished':
-                classNameDis = "add-card-button-finished";
-                break;
-            default:
-                break;
+function chooseTask(event) { 
+    if (event.target.tagName === "LI") {
+        tempTasksList.insertAdjacentHTML("beforebegin", `<div class="tasks">${event.target.innerHTML}</div>`);
+        
+        if (event.currentTarget.parentNode.nextElementSibling) {
+            let nextButton = event.currentTarget.parentNode.nextElementSibling.querySelector('.add-card-button');
+            nextButton.disabled = false;
         }
 
-        if (classNameDis !== null) {
-            setButtonDisabled(classNameDis, true);
+        for(let val of tasksList) {
+            if(val.innerHTML === event.target.innerHTML) {
+                val.remove(); 
+                let taskBlock = document.querySelectorAll('.task-block');
+                footerInfo[0].innerHTML = `First block tasks: &lt;${taskBlock[0].querySelectorAll('.tasks').length}&gt;`;
+                footerInfo[1].innerHTML = `Last block tasks: &lt;${taskBlock[taskBlock.length-1].querySelectorAll('.tasks').length}&gt;`;
+                tempTasksList.remove();
+                isListOpen = false;
+            }
         }
+    }
+
+    if (tasksList.length < 2) {
+        addButton.disabled = true;
     }
 }
